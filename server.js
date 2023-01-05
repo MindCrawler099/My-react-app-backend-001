@@ -10,9 +10,13 @@ const corsConfig = (req,callback)=>{
 }
 
 const app = express();
+const port = 4000;
+
 app.use(cors(corsConfig));
 
-const port = 4000;
+app.use('/postcomment',require('./router/postCommentRouter').postCommentRouter);
+
+
 
 app.listen(port,()=>{
     console.log(`App running on http://localhost:${4000}`);
