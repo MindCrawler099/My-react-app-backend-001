@@ -1,0 +1,10 @@
+CREATE DATABASE `reactjs001commentsdb`;
+
+CREATE TABLE IF NOT EXISTS `commentstable`(
+    `commentid` INT AUTO_INCREMENT PRIMARY KEY,
+    `commenttitle` TEXT NOT NULL,
+    `commenttext` TEXT NOT NULL,
+    `commentdate` DATETIME NOT NULL
+)
+
+INSERT INTO `commentstable`(commenttitle,commenttext,commentdate) VALUES (?,?,?)
