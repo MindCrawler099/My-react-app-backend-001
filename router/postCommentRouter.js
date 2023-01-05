@@ -23,6 +23,7 @@ mysqlconnector.connect((error)=>{
     }
 });
 
+
 postCommentRouter.route('/').post((req,res)=>{
     const dummyresponse = `${req.body.title} and ${req.body.text} and ${req.body.time}`;
     console.log(dummyresponse);
@@ -39,10 +40,13 @@ postCommentRouter.route('/').post((req,res)=>{
         console.log('Inserted');
     });
 
-    res.json({
-        title:req.body.title,
-        text:req.body.text,
-        time:req.body.time
+}).get((req,res)=>{
+    const selectAllPostsQuery = `SELECT * FROM commentstable`;
+    mysqlconnector.query(selectAllPostsQuery,(error,results)=>{
+        if(error) throw error;
+        res.json({
+            posts:results
+        })
     })
 })
 
